@@ -1,0 +1,22 @@
+<div class="grid-cols-1 h-fit border px-4 py-2 ml-4 mb-4 text-sm rounded justify-end">
+    <div class="mb-4">
+        <div class="text-lg font-semibold">
+            {{repo?.name}}
+        </div>
+        <div class="text-xs font-medium">
+            {{user?.login}}/{{repo?.name}}
+        </div>
+    </div>
+    <div class="">
+        <p class="text-sm font-medium" *ngIf="repo?.description !== null">
+            {{repo?.description?.substring(0,50)}}...
+        </p>
+    </div>
+    <div class="flex text-sm mt-2 flex-wrap gap-1">
+        <div class="font-thin text-xs" *ngFor="let tag of repo?.tags">
+            <div class="p-2 bg-blue-500 text-white rounded-md font-semibold">
+                <p>{{tag}}</p>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,180 @@
+<div class="w-3/4 ml-6">
+    <div class="flex items-center justify-between py-2">
+        <div class="w-1/2 pb-2 ml-4 font-medium text-lg text-grey-darkest">
+            Repositories
+        </div>
+        <div class="flex justify-between items-center px-4 pt-2 gap-2">
+            <button type="button" (click)="onPageChange(page - 1)"
+                class="font-semibold bg-blue-500 p-2 text-sm rounded-md hover:bg-blue-600 text-white">&#11164;
+                Prev</button>
+            <!-- <span class="font-semibold">Showing 10 of 20 results</span> -->
+            <button type="button" (click)="onPageChange(page + 1)" [ngClass]="{'disabled': showNoRepo}"
+                class="font-semibold bg-blue-500 p-2 text-sm rounded-md hover:bg-blue-600 text-white disabled:bg-blue-300 disabled:cursor-not-allowed">Next
+                &#11166;</button>
+        </div>
+    </div>
+
+
+    <div class="grid grid-cols-2" *ngIf="repositories.length !== 0 && !isLoading">
+        <div *ngFor="let repo of repositories">
+            <app-repo-cards [repo]="repo" [user]="user"></app-repo-cards>
+        </div>
+    </div>
+
+    <div *ngIf="isLoading">
+        <div role="status" class="w-full space-y-4 animate-pulse dark:divide-gray-700 md:p-4 dark:border-gray-700">
+            <div class="grid grid-cols-2 items-center justify-end gap-x-4">
+                <div class="grid-cols-1 flex flex-col gap-2 justify-between border rounded-lg p-4">
+                    <div>
+                        <div class="w-32 h-2.5 bg-gray-200 rounded-full dark:bg-gray-400"></div>
+                        <div class="h-2 bg-gray-300 rounded-full dark:bg-gray-400 w-24 mt-2"></div>
+                    </div>
+                    <div class="h-2 bg-gray-300 rounded-full dark:bg-gray-400 w-48 mt-4"></div>
+                    <div class="flex gap-x-2">
+                        <div class="h-6 w-8 bg-gray-300 rounded-md dark:bg-gray-400"></div>
+                        <div class="h-6 w-8 bg-gray-300 rounded-md dark:bg-gray-400"></div>
+                        <div class="h-6 w-8 bg-gray-300 rounded-md dark:bg-gray-400"></div>
+                        <div class="h-6 w-8 bg-gray-300 rounded-md dark:bg-gray-400"></div>
+                    </div>
+                </div>
+                <div class="grid-cols-1 flex flex-col gap-2 justify-between border rounded-lg p-4">
+                    <div>
+                        <div class="w-32 h-2.5 bg-gray-200 rounded-full dark:bg-gray-400"></div>
+                        <div class="h-2 bg-gray-300 rounded-full dark:bg-gray-400 w-24 mt-2"></div>
+                    </div>
+                    <div class="h-2 bg-gray-300 rounded-full dark:bg-gray-400 w-48 mt-4"></div>
+                    <div class="flex gap-x-2">
+                        <div class="h-6 w-8 bg-gray-300 rounded-md dark:bg-gray-400"></div>
+                        <div class="h-6 w-8 bg-gray-300 rounded-md dark:bg-gray-400"></div>
+                        <div class="h-6 w-8 bg-gray-300 rounded-md dark:bg-gray-400"></div>
+                        <div class="h-6 w-8 bg-gray-300 rounded-md dark:bg-gray-400"></div>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="grid grid-cols-2 items-center justify-end gap-x-4">
+                <div class="grid-cols-1 flex flex-col gap-2 justify-between border rounded-lg p-4">
+                    <div>
+                        <div class="w-32 h-2.5 bg-gray-200 rounded-full dark:bg-gray-400"></div>
+                        <div class="h-2 bg-gray-300 rounded-full dark:bg-gray-400 w-24 mt-2"></div>
+                    </div>
+                    <div class="h-2 bg-gray-300 rounded-full dark:bg-gray-400 w-48 mt-4"></div>
+                    <div class="flex gap-x-2">
+                        <div class="h-6 w-8 bg-gray-300 rounded-md dark:bg-gray-400"></div>
+                        <div class="h-6 w-8 bg-gray-300 rounded-md dark:bg-gray-400"></div>
+                        <div class="h-6 w-8 bg-gray-300 rounded-md dark:bg-gray-400"></div>
+                        <div class="h-6 w-8 bg-gray-300 rounded-md dark:bg-gray-400"></div>
+                    </div>
+                </div>
+                <div class="grid-cols-1 flex flex-col gap-2 justify-between border rounded-lg p-4">
+                    <div>
+                        <div class="w-32 h-2.5 bg-gray-200 rounded-full dark:bg-gray-400"></div>
+                        <div class="h-2 bg-gray-300 rounded-full dark:bg-gray-400 w-24 mt-2"></div>
+                    </div>
+                    <div class="h-2 bg-gray-300 rounded-full dark:bg-gray-400 w-48 mt-4"></div>
+                    <div class="flex gap-x-2">
+                        <div class="h-6 w-8 bg-gray-300 rounded-md dark:bg-gray-400"></div>
+                        <div class="h-6 w-8 bg-gray-300 rounded-md dark:bg-gray-400"></div>
+                        <div class="h-6 w-8 bg-gray-300 rounded-md dark:bg-gray-400"></div>
+                        <div class="h-6 w-8 bg-gray-300 rounded-md dark:bg-gray-400"></div>
+                    </div>
+                </div>
+                
+            </div>
+            <div class="grid grid-cols-2 items-center justify-end gap-x-4">
+                <div class="grid-cols-1 flex flex-col gap-2 justify-between border rounded-lg p-4">
+                    <div>
+                        <div class="w-32 h-2.5 bg-gray-200 rounded-full dark:bg-gray-400"></div>
+                        <div class="h-2 bg-gray-300 rounded-full dark:bg-gray-400 w-24 mt-2"></div>
+                    </div>
+                    <div class="h-2 bg-gray-300 rounded-full dark:bg-gray-400 w-48 mt-4"></div>
+                    <div class="flex gap-x-2">
+                        <div class="h-6 w-8 bg-gray-300 rounded-md dark:bg-gray-400"></div>
+                        <div class="h-6 w-8 bg-gray-300 rounded-md dark:bg-gray-400"></div>
+                        <div class="h-6 w-8 bg-gray-300 rounded-md dark:bg-gray-400"></div>
+                        <div class="h-6 w-8 bg-gray-300 rounded-md dark:bg-gray-400"></div>
+                    </div>
+                </div>
+                <div class="grid-cols-1 flex flex-col gap-2 justify-between border rounded-lg p-4">
+                    <div>
+                        <div class="w-32 h-2.5 bg-gray-200 rounded-full dark:bg-gray-400"></div>
+                        <div class="h-2 bg-gray-300 rounded-full dark:bg-gray-400 w-24 mt-2"></div>
+                    </div>
+                    <div class="h-2 bg-gray-300 rounded-full dark:bg-gray-400 w-48 mt-4"></div>
+                    <div class="flex gap-x-2">
+                        <div class="h-6 w-8 bg-gray-300 rounded-md dark:bg-gray-400"></div>
+                        <div class="h-6 w-8 bg-gray-300 rounded-md dark:bg-gray-400"></div>
+                        <div class="h-6 w-8 bg-gray-300 rounded-md dark:bg-gray-400"></div>
+                        <div class="h-6 w-8 bg-gray-300 rounded-md dark:bg-gray-400"></div>
+                    </div>
+                </div>
+                
+            </div>
+            <div class="grid grid-cols-2 items-center justify-end gap-x-4">
+                <div class="grid-cols-1 flex flex-col gap-2 justify-between border rounded-lg p-4">
+                    <div>
+                        <div class="w-32 h-2.5 bg-gray-200 rounded-full dark:bg-gray-400"></div>
+                        <div class="h-2 bg-gray-300 rounded-full dark:bg-gray-400 w-24 mt-2"></div>
+                    </div>
+                    <div class="h-2 bg-gray-300 rounded-full dark:bg-gray-400 w-48 mt-4"></div>
+                    <div class="flex gap-x-2">
+                        <div class="h-6 w-8 bg-gray-300 rounded-md dark:bg-gray-400"></div>
+                        <div class="h-6 w-8 bg-gray-300 rounded-md dark:bg-gray-400"></div>
+                        <div class="h-6 w-8 bg-gray-300 rounded-md dark:bg-gray-400"></div>
+                        <div class="h-6 w-8 bg-gray-300 rounded-md dark:bg-gray-400"></div>
+                    </div>
+                </div>
+                <div class="grid-cols-1 flex flex-col gap-2 justify-between border rounded-lg p-4">
+                    <div>
+                        <div class="w-32 h-2.5 bg-gray-200 rounded-full dark:bg-gray-400"></div>
+                        <div class="h-2 bg-gray-300 rounded-full dark:bg-gray-400 w-24 mt-2"></div>
+                    </div>
+                    <div class="h-2 bg-gray-300 rounded-full dark:bg-gray-400 w-48 mt-4"></div>
+                    <div class="flex gap-x-2">
+                        <div class="h-6 w-8 bg-gray-300 rounded-md dark:bg-gray-400"></div>
+                        <div class="h-6 w-8 bg-gray-300 rounded-md dark:bg-gray-400"></div>
+                        <div class="h-6 w-8 bg-gray-300 rounded-md dark:bg-gray-400"></div>
+                        <div class="h-6 w-8 bg-gray-300 rounded-md dark:bg-gray-400"></div>
+                    </div>
+                </div>
+                
+            </div>
+            <div class="grid grid-cols-2 items-center justify-end gap-x-4">
+                <div class="grid-cols-1 flex flex-col gap-2 justify-between border rounded-lg p-4">
+                    <div>
+                        <div class="w-32 h-2.5 bg-gray-200 rounded-full dark:bg-gray-400"></div>
+                        <div class="h-2 bg-gray-300 rounded-full dark:bg-gray-400 w-24 mt-2"></div>
+                    </div>
+                    <div class="h-2 bg-gray-300 rounded-full dark:bg-gray-400 w-48 mt-4"></div>
+                    <div class="flex gap-x-2">
+                        <div class="h-6 w-8 bg-gray-300 rounded-md dark:bg-gray-400"></div>
+                        <div class="h-6 w-8 bg-gray-300 rounded-md dark:bg-gray-400"></div>
+                        <div class="h-6 w-8 bg-gray-300 rounded-md dark:bg-gray-400"></div>
+                        <div class="h-6 w-8 bg-gray-300 rounded-md dark:bg-gray-400"></div>
+                    </div>
+                </div>
+                <div class="grid-cols-1 flex flex-col gap-2 justify-between border rounded-lg p-4">
+                    <div>
+                        <div class="w-32 h-2.5 bg-gray-200 rounded-full dark:bg-gray-400"></div>
+                        <div class="h-2 bg-gray-300 rounded-full dark:bg-gray-400 w-24 mt-2"></div>
+                    </div>
+                    <div class="h-2 bg-gray-300 rounded-full dark:bg-gray-400 w-48 mt-4"></div>
+                    <div class="flex gap-x-2">
+                        <div class="h-6 w-8 bg-gray-300 rounded-md dark:bg-gray-400"></div>
+                        <div class="h-6 w-8 bg-gray-300 rounded-md dark:bg-gray-400"></div>
+                        <div class="h-6 w-8 bg-gray-300 rounded-md dark:bg-gray-400"></div>
+                        <div class="h-6 w-8 bg-gray-300 rounded-md dark:bg-gray-400"></div>
+                    </div>
+                </div>
+                
+            </div>
+            
+            
+        </div>
+    </div>
+
+    <!-- <div *ngIf="showNoRepo && repositories.length === 0">
+        <p class="text-center">No More Repositories!</p>
+    </div> -->
+</div>

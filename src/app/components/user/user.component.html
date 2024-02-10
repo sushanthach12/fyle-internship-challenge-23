@@ -1,0 +1,46 @@
+<div class="w-full">
+    <div class="mb-4">
+        <img class="rounded-full xl:h-72 xl:w-72" src={{user?.avatar_url}}>
+    </div>
+
+    <div class="mb-4">
+        <div class="text-3xl font-medium text-grey-darkest">
+            {{user?.name}}
+        </div>
+        <div class="text-xl text-grey-dark font-light">
+            <a href="https://github.com/{{user?.login}}" target="_blank">{{user?.login}}</a>
+        </div>
+    </div>
+
+    <div class="pb-2">
+        <p class="text-sm font-semibold">
+            {{user?.bio}}
+        </p>
+    </div>
+
+    <div class="mb-4">
+        <div class="flex items-center">
+            <img class="h-5 w-5 mr-2" src="https://img.icons8.com/parakeet-line/48/user-group-man-woman.png" alt="user-group-man-woman" />
+            <p class="text-sm font-medium text-grey-darkest">
+                <span class="mr-1 font-semibold">{{user?.followers}}</span>followers •
+                <span class="mr-1 font-semibold">{{user?.following}}</span>following
+            </p>
+        </div>
+    </div>
+
+    <div class="flex justify-start items-center text-center py-2">
+        <div class="flex items-center mr-2">
+            <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" class="h-6 w-6" viewBox="0 0 45 45">
+                <path
+                    d="M 11 4 C 7.134 4 4 7.134 4 11 L 4 39 C 4 42.866 7.134 46 11 46 L 39 46 C 42.866 46 46 42.866 46 39 L 46 11 C 46 7.134 42.866 4 39 4 L 11 4 z M 13.085938 13 L 21.023438 13 L 26.660156 21.009766 L 33.5 13 L 36 13 L 27.789062 22.613281 L 37.914062 37 L 29.978516 37 L 23.4375 27.707031 L 15.5 37 L 13 37 L 22.308594 26.103516 L 13.085938 13 z M 16.914062 15 L 31.021484 35 L 34.085938 35 L 19.978516 15 L 16.914062 15 z">
+                </path>
+            </svg>
+        </div>
+        <div>
+            <a href="https://twitter.com/{{user?.twitter_username}}" class="no-underline text-sm" target="_blank">
+                @{{user?.twitter_username}}
+            </a>
+        </div>
+    </div>
+
+</div>
